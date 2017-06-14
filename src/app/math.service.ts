@@ -30,7 +30,7 @@ export class MathService {
             }), 
             { headers: this.headers })
       .toPromise()
-      .then(res => res.json().data);
+      .then(res => res.json());
   }
 
   // Send POST request to REST API and return a promise that will return the difference between two numbers
@@ -43,7 +43,7 @@ export class MathService {
             }), 
             { headers: this.headers })
       .toPromise()
-      .then(res => res.json().data);
+      .then(res => res.json());
   }
 
   // Send POST request to REST API and return a promise that will return the product of two numbers
@@ -56,7 +56,7 @@ export class MathService {
             }), 
             { headers: this.headers })
       .toPromise()
-      .then(res => res.json().data);
+      .then(res => res.json());
   }
 
   // Send POST request to REST API and return a promise that will return the quotient of two numbers
@@ -69,6 +69,6 @@ export class MathService {
             }), 
             { headers: this.headers })
       .toPromise()
-      .then(res => res.json().data);
+      .then(res => res.json());
   }
 }
