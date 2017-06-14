@@ -21,7 +21,7 @@ export class MathService {
   */
 
   // Send POST request to REST API and return a promise that will return the sum of two numbers
-  addNumbers(_num1, _num2): Promise<Object> {
+  addNumbers(_num1, _num2) {
     return this.http
       .post(this.apiUrl + '/add', 
             JSON.stringify({
@@ -34,7 +34,7 @@ export class MathService {
   }
 
   // Send POST request to REST API and return a promise that will return the difference between two numbers
-  subtractNumbers(_num1, _num2): Promise<Object> {
+  subtractNumbers(_num1, _num2) {
     return this.http
       .post(this.apiUrl + '/subtract', 
             JSON.stringify({
@@ -47,7 +47,7 @@ export class MathService {
   }
 
   // Send POST request to REST API and return a promise that will return the product of two numbers
-  multiplyNumbers(_num1, _num2): Promise<Object> {
+  multiplyNumbers(_num1, _num2) {
     return this.http
       .post(this.apiUrl + '/multiply', 
             JSON.stringify({
@@ -60,7 +60,7 @@ export class MathService {
   }
 
   // Send POST request to REST API and return a promise that will return the quotient of two numbers
-  divideNumbers(_num1, _num2): Promise<Object> {
+  divideNumbers(_num1, _num2) {
     return this.http
       .post(this.apiUrl + '/divide', 
             JSON.stringify({
