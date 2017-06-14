@@ -1,0 +1,40 @@
+/* Stylesheets for calculator */
+.textField {
+  border: 1px solid #CCCCCC;
+  padding: 10px 15px;
+  border-radius: 3px;
+  font-size: 1.25em;
+  color: #454545;
+  width: 100%;
+  max-width: 150px;
+  margin: 0 auto;
+  display: block;
+}
+
+.buttons {
+  text-align: center;
+}
+
+.buttons button {
+  padding: 10px 14px;
+  border: 1px solid #CCCCCC;
+  background: #F0F0F0;
+  border-radius: 3px;
+  font-size: 1.25em;
+}
+
+.buttons button:hover {
+  background: #E0E0E0;
+}
+
+.buttons button.active {
+  background: #7494F2;
+  border-color: #3761DE;
+  color: #FFFFFF;
+}
+
+.resultLabel {
+  text-align: center;
+  font-size: 3em;
+  margin: 20px auto;
+}
