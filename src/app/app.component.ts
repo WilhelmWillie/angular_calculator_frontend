@@ -20,7 +20,6 @@ export class AppComponent {
 
     this.mathService.addNumbers(this.num1, this.num2)
                     .then((data) => {
-                      console.log(data);
                       this.result = data.result;
                     });
   }
