@@ -6,7 +6,7 @@ import 'rxjs/add/operator/toPromise';
 
 @Injectable()
 export class MathService {
-  private apiUrl = '/api/math';
+  private apiUrl = 'http://localhost:8080/api/math';
   private headers = new Headers({'Content-Type': 'application/json'});
 
   constructor(private http : Http) { }
