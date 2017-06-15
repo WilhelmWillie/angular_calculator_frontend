@@ -30,7 +30,8 @@ export class MathService {
             }), 
             { headers: this.headers })
       .toPromise()
-      .then(res => res.json().data);
+      .then(res => res.json())
+      .catch(this.handleError);
   }
 
   // Send POST request to REST API and return a promise that will return the difference between two numbers
@@ -43,7 +44,8 @@ export class MathService {
             }), 
             { headers: this.headers })
       .toPromise()
-      .then(res => res.json().data);
+      .then(res => res.json())
+      .catch(this.handleError);
   }
 
   // Send POST request to REST API and return a promise that will return the product of two numbers
@@ -56,7 +58,8 @@ export class MathService {
             }), 
             { headers: this.headers })
       .toPromise()
-      .then(res => res.json().data);
+      .then(res => res.json())
+      .catch(this.handleError);
   }
 
   // Send POST request to REST API and return a promise that will return the quotient of two numbers
@@ -69,6 +72,13 @@ export class MathService {
             }), 
             { headers: this.headers })
       .toPromise()
-      .then(res => res.json().data);
+      .then(res => res.json())
+      .catch(this.handleError);
+  }
+
+  // Handle potential errors (404, 503, etc)
+  private handleError(error: any): Promise<any> {
+    console.error('An error occurred', error); // for demo purposes only
+    return Promise.reject(error.message || error);
   }
 }
