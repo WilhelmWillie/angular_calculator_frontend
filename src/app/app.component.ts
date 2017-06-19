@@ -8,14 +8,16 @@ import { MathService } from './math.service';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  private num1 = 0;
-  private num2 = 0;
+  public num1 = 0;
+  public num2 = 0;
   private result = 0;
   private operation;
 
   constructor(private mathService : MathService) {}
 
   add() {
+    console.log("[YO] Add");
+
     this.operation = "ADD";
 
     this.mathService.addNumbers(this.num1, this.num2)
@@ -44,7 +46,7 @@ export class AppComponent {
 
   divide() {
     this.operation = "DIVIDE";
-    
+
     this.mathService.divideNumbers(this.num1, this.num2)
                     .then((data) => {
                       this.result = data.result;

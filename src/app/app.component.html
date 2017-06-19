@@ -8,24 +8,28 @@
   <div class="buttons">
     <button 
       (click)="add()" 
-      [ngClass]="{'active': (operation == 'ADD')}">+</button>
+      [ngClass]="{'active': (operation == 'ADD')}"
+      id="addButton">+</button>
 
     <button 
       (click)="subtract()" 
-      [ngClass]="{'active': (operation == 'SUBTRACT')}">-</button>
+      [ngClass]="{'active': (operation == 'SUBTRACT')}"
+      id="subtractButton">-</button>
 
     <button 
       (click)="multiply()" 
-      [ngClass]="{'active': (operation == 'MULTIPLY')}">x</button>
+      [ngClass]="{'active': (operation == 'MULTIPLY')}"
+      id="multiplyButton">x</button>
 
     <button 
       (click)="divide()" 
-      [ngClass]="{'active': (operation == 'DIVIDE')}">÷</button>
+      [ngClass]="{'active': (operation == 'DIVIDE')}"
+      id="divideButton">÷</button>
   </div>
 
   <br>
 
   <input id="num2" type="number" class="textField" name="num2" [(ngModel)]="num2">
 
-  <h2 class="resultLabel">{{result}}</h2>
+  <h2 class="resultLabel" id="results">{{result}}</h2>
 </div>
