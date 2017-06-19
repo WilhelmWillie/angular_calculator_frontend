@@ -12,26 +12,35 @@ describe('AppComponent (Calculator)', () => {
   let mockBackend : MockBackend;
   let app, fixture;
 
+  // In place of actually communicating with a backend, mock an ideal API response for testing purposes
   function mockBackendFunctions(testBed : TestBed) {
     mockBackend = testBed.get(MockBackend);
     mockBackend.connections.subscribe(
       (connection : MockConnection) => {
+        console.log(connection);
+        console.log(connection.request);
+
+        // The Math API is structured as /api/math/{function} where function is add, subtract, multiply, or divide
+        const urlSplit = connection.request.url.split('/');
+        const action = urlSplit[urlSplit.length - 1];
+
         const isAdd = connection.request.url &&
                       connection.request.method === RequestMethod.Post &&
-                      connection.request.url == '/api/math/add';
+                      action == 'add';
 
         const isSubtract = connection.request.url &&
                       connection.request.method === RequestMethod.Post &&
-                      connection.request.url == '/api/math/subtract';
+                      action == 'subtract';
 
         const isMultiply = connection.request.url &&
                       connection.request.method === RequestMethod.Post &&
-                      connection.request.url == '/api/math/multiply';
+                      action == 'multiply';
 
         const isDivide = connection.request.url &&
                       connection.request.method === RequestMethod.Post &&
-                      connection.request.url == '/api/math/divide';
+                      action == 'divide';
 
+        // Pull out the data sent via POST
         const postData = JSON.parse(connection.request.getBody());
 
         if (isAdd) {
@@ -77,6 +86,7 @@ describe('AppComponent (Calculator)', () => {
     )
   }
 
+  // Set up the TestBed and import all the necessary modules, components, providers, etc.
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       imports: [
@@ -89,12 +99,13 @@ describe('AppComponent (Calculator)', () => {
       providers: [
         MathService,
         MockBackend,
-        BaseRequestOptions,
+        BaseRequestOptions, 
         {
           provide: Http,
           deps: [MockBackend, BaseRequestOptions],
           useFactory:
             (backend: XHRBackend, defaultOptions: BaseRequestOptions) => {
+                // Override the usual Http requests with a MockBackend
                 return new Http(backend, defaultOptions);
             }
         }
@@ -116,7 +127,7 @@ describe('AppComponent (Calculator)', () => {
     app = fixture.debugElement.componentInstance;
 
     // Set the inputs
-    app.num1 = 5;
+    app.num1 = 5; 
     app.num2 = 3;
 
     // Click the add button 
@@ -127,7 +138,7 @@ describe('AppComponent (Calculator)', () => {
     fixture.detectChanges();
 
     // Inner HTML should equal num1 + num2
-    expect(fixture.nativeElement.querySelector('#results').innerHTML).toEqual('8');
+    expect(fixture.debugElement.nativeElement.querySelector('#results').innerHTML).toEqual('8');
   }));
 
   it('should display `-9` as a result when `45` and `-54` are inputted and the add button is clicked', fakeAsync(() => {

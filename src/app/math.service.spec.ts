@@ -17,8 +17,4 @@ describe('MathService', () => {
   it('should be created', inject([MathService], (service: MathService) => {
     expect(service).toBeTruthy();
   }));
-
-  it('should access the add API endpoint and return the right result', inject([MathService], (service: MathService) => {
-    expect(service).toBeTruthy();
-  }));
 });

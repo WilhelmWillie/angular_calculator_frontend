@@ -16,6 +16,8 @@ export class AppComponent {
   constructor(private mathService : MathService) {}
 
   add() {
+    console.log("[YO] Add");
+
     this.operation = "ADD";
 
     this.mathService.addNumbers(this.num1, this.num2)
