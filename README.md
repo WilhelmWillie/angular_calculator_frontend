@@ -28,3 +28,10 @@ This calculator displays two text boxes, four buttons, and a results label. When
 |/api/math/divide|POST|
 
 The frontend expects a JSON object with the right mathematical results structured as: `{ "result": 5 }`
+
+## Example of how frontend works with backend
+When the user presses the add button, the math service sends a POST request to the API route  `/api/math/add` with an `application/json` payload in the format: `{ num1: 5, num2: 9 }`
+
+The backend should expect a JSON string that it should parse. It should extract num1 and num2 from the POST payload, compute the result, and return the mathematical result in the following JSON format: `{ "result": 14 }`
+
+This procedure is the same for all 4 functions replacing the `add` in the API route with `subtract`, `multiply`, or `divide` with the corresponding mathematical operation.
